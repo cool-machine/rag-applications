@@ -414,6 +414,7 @@ class WeaviateIndexer:
                          unique_id_field: str='doc_id',
                          properties: list[Property]=None,
                          collection_description: str=None,
+                         batch_size: int = 10,
                          **kwargs
                          ) -> dict:
         '''
@@ -470,6 +471,20 @@ class WeaviateIndexer:
                     print('Upload errors exceed error_threshold...')
                     completed_job = False
                     break 
+        
+        # with collection.batch.dynamic() as batch:
+        #     for i in tqdm(range(0, len(data), batch_size)):  # Process in batches
+        #         batch_data = data[i:i + batch_size]
+        #         for doc in batch_data:
+        #             batch.add_object(
+        #                 properties={k: v for k, v in doc.items() if k != vector_property},
+        #                 vector=doc[vector_property]
+        #             )
+        #         if batch.number_errors > error_threshold_size:
+        #             print('Upload errors exceed error_threshold...')
+        #             completed_job = False
+        #             break
+        
         end = time.perf_counter() - start
         print(f'Processing finished in {round(end/60, 2)} minutes.')
         
