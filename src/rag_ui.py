@@ -178,3 +178,4 @@ def main(retriever: WeaviateWCS):
 
 if __name__ == '__main__':
     main(retriever)
+    retriever._client.close()
