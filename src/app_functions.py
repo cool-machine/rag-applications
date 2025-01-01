@@ -165,7 +165,7 @@ def search_result(i: int,
                   title: str, 
                   content: str,
                   guest: str,
-                  length: str,
+                #   length: str,
                   space: str='&nbsp; &nbsp;'
                  ) -> str:
     
@@ -189,7 +189,7 @@ def search_result(i: int,
         </div>
 
         <div style="font-size:95%;">
-            <p>Episode Length: {length} {space}{space} Guest: {guest}</p>
+            <p>Episode Guest: Guest: {guest}</p>
             <div style="color:grey;float:left;">
                 ...
             </div>

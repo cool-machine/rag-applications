@@ -93,7 +93,7 @@ def main(retriever: WeaviateWCS):
     ##############################
     ##### SETUP MAIN DISPLAY #####
     ##############################
-    
+
     st.image(f'{ICON_DIR}/hlabs_logo.png', width=400)
     st.subheader("Search with the Huberman Lab podcast:")
     st.write('\n')
@@ -157,24 +157,25 @@ def main(retriever: WeaviateWCS):
     ##################
             st.subheader("Search Results")
             for i, hit in enumerate(valid_response):
+                # print(hit.keys())
                 col1, col2 = st.columns([7, 3], gap='large')
                 episode_url = hit['episode_url']
                 title = hit['title']
-                show_length = hit['length_seconds']
-                time_string = convert_seconds(show_length) # convert show_length to readable time string
+                # show_length = hit['length_seconds']
+                # time_string = convert_seconds(show_length) # convert show_length to readable time string
                 with col1:
                     st.write( search_result(i=i, 
                                             url=episode_url,
                                             guest=hit['guest'],
                                             title=title,
-                                            content=ranked_response[i]['content'], 
-                                            length=time_string),
+                                            content=ranked_response[i]['content']), 
+                                            # length=time_string),
                                             unsafe_allow_html=True)
                     st.write('\n\n')
 
                 with col2:
                     image = hit['thumbnail_url']
-                    st.image(image, caption=title.split('|')[0], width=200, use_column_width=False)
+                    st.image(image, caption=title.split('|')[0], width=200, use_container_width=False)
                     st.markdown(f'<p style="text-align": right;"><b>Guest: {hit["guest"]}</b>', unsafe_allow_html=True)
 
 if __name__ == '__main__':
