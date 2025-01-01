@@ -93,6 +93,7 @@ def main(retriever: WeaviateWCS):
     ##############################
     ##### SETUP MAIN DISPLAY #####
     ##############################
+    
     st.image(f'{ICON_DIR}/hlabs_logo.png', width=400)
     st.subheader("Search with the Huberman Lab podcast:")
     st.write('\n')
